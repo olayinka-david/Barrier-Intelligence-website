@@ -1,0 +1,12 @@
+{
+  "name": "barrier-intelligence-marketing",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node dev-server.mjs",
+    "start": "node dev-server.mjs"
+  },
+  "dependencies": {
+    "gsap": "^3.15.0"
+  }
+}
