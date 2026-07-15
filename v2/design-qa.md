@@ -88,6 +88,17 @@ final result: passed
 
 ---
 
+# GSAP interaction refinement â€” 15 July 2026
+
+- Loader handoff now triggers the visible hero sequence, with masked headline lines, staggered navigation, scroll progress, section reveals, register staging, pointer-responsive feature surfaces, product-row feedback, and magnetic calls to action.
+- Dark/light switching retains its existing state behavior and now receives a brief GSAP transition.
+- Motion is disabled for reduced-motion users and deterministic QA captures.
+- Verified captures: `qa/motion-v2-final.png` and `qa/motion-v2-mobile-final.png`.
+
+final result: passed
+
+---
+
 # Illustration direction restoration â€” 15 July 2026
 
 The gold illustration variants were retired at user direction. Version 2 retains its light/dark theme capability and brand-gold interface accents, while the hero and all four capability cards now use the original blue evidence artwork for stronger visual depth and legibility.

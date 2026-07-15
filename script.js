@@ -133,6 +133,12 @@ function initMotion() {
   gsap.registerPlugin(ScrollTrigger);
   root.classList.add("motion-enabled");
 
+  gsap.to(".scroll-progress span", {
+    scaleX: 1,
+    ease: "none",
+    scrollTrigger: { start: 0, end: "max", scrub: 0.25 }
+  });
+
   const progress = { value: 0 };
   const loaderCount = document.querySelector(".loader-count");
   const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
@@ -162,6 +168,22 @@ function initMotion() {
     scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: 1 }
   });
 
+  gsap.from(".trust-strip span", {
+    opacity: 0,
+    y: 16,
+    stagger: 0.07,
+    duration: 0.65,
+    ease: "power3.out",
+    scrollTrigger: { trigger: ".trust-strip", start: "top 92%", once: true }
+  });
+
+  gsap.to(".problem-visual img", {
+    yPercent: 5,
+    scale: 1.045,
+    ease: "none",
+    scrollTrigger: { trigger: ".problem-visual", start: "top bottom", end: "bottom top", scrub: 1 }
+  });
+
   const reveal = (targets, trigger, options = {}) => {
     const elements = gsap.utils.toArray(targets).filter((element) => !element.hidden);
     if (!elements.length) return;
@@ -189,6 +211,15 @@ function initMotion() {
   reveal(".proof-grid article", ".proof-grid", { stagger: 0.15, start: "top 78%" });
   reveal(".vision > *", ".vision", { stagger: 0.1 });
   reveal(".cta-section > *", ".cta-section", { stagger: 0.1, start: "top 78%" });
+
+  gsap.from(".vision-line span", {
+    opacity: 0.28,
+    x: -18,
+    stagger: 0.13,
+    duration: 0.7,
+    ease: "power3.out",
+    scrollTrigger: { trigger: ".vision-line", start: "top 84%", once: true }
+  });
 
   gsap.from(".register-table .table-row:not(.table-head)", {
     opacity: 0,
@@ -231,11 +262,36 @@ function initMotion() {
       rotateX(((event.clientY - rect.top) / rect.height - 0.5) * -3);
     });
     frame.addEventListener("pointerleave", () => { rotateX(0); rotateY(0); });
+
+    const register = document.querySelector(".register-ui");
+    if (register) {
+      register.classList.add("motion-surface");
+      const registerX = gsap.quickTo(register, "rotationX", { duration: 0.65, ease: "power3.out" });
+      const registerY = gsap.quickTo(register, "rotationY", { duration: 0.65, ease: "power3.out" });
+      gsap.set(register, { transformPerspective: 1400 });
+      register.addEventListener("pointermove", (event) => {
+        const rect = register.getBoundingClientRect();
+        registerY(((event.clientX - rect.left) / rect.width - 0.5) * 2.4);
+        registerX(((event.clientY - rect.top) / rect.height - 0.5) * -2);
+      });
+      register.addEventListener("pointerleave", () => { registerX(0); registerY(0); });
+    }
+
+    document.querySelectorAll(".plain-card, .steps-grid article, .proof-grid article").forEach((surface) => {
+      surface.classList.add("motion-surface");
+      surface.addEventListener("pointerenter", () => gsap.to(surface, { y: -7, scale: 1.012, duration: 0.35, ease: "power3.out" }));
+      surface.addEventListener("pointerleave", () => gsap.to(surface, { y: 0, scale: 1, duration: 0.45, ease: "power3.out" }));
+    });
   }
 
   document.querySelectorAll(".button, .theme-toggle, .product-tabs button").forEach((control) => {
     control.addEventListener("pointerenter", () => gsap.to(control, { scale: 1.018, duration: 0.22, ease: "power2.out" }));
-    control.addEventListener("pointerleave", () => gsap.to(control, { scale: 1, duration: 0.3, ease: "power2.out" }));
+    control.addEventListener("pointermove", (event) => {
+      if (!window.matchMedia("(pointer: fine)").matches) return;
+      const rect = control.getBoundingClientRect();
+      gsap.to(control, { x: (event.clientX - rect.left - rect.width / 2) * 0.08, y: (event.clientY - rect.top - rect.height / 2) * 0.1, duration: 0.35, ease: "power3.out" });
+    });
+    control.addEventListener("pointerleave", () => gsap.to(control, { x: 0, y: 0, scale: 1, duration: 0.4, ease: "power3.out" }));
   });
 
   window.addEventListener("load", () => ScrollTrigger.refresh());

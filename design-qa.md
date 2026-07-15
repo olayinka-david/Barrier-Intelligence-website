@@ -52,6 +52,16 @@ final result: passed
 
 ---
 
+# GSAP interaction refinement â€” 15 July 2026
+
+- Loader-to-hero staging, scroll progress, trust-strip reveal, image parallax, counter motion, card lift, register perspective, and magnetic controls added.
+- Motion is limited to transform and opacity where possible and remains disabled for reduced-motion users and deterministic QA captures.
+- Desktop final-state capture: `qa/motion-v1-final.png`.
+
+final result: passed
+
+---
+
 # Typography-density refinement — 15 July 2026
 
 **Source visual truth**
