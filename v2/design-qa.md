@@ -88,6 +88,41 @@ final result: passed
 
 ---
 
+# Light-mode and gold-illustration pass â€” 15 July 2026
+
+**Source visual truth**
+
+- Barrier Intelligence gold: `#a6824c`, with bronze-gold and champagne tonal steps.
+- Existing V2 compositions: the original hero and four capability illustrations.
+
+**Implementation evidence**
+
+- `qa/v2-light-hero.png` â€” 1440 Ã— 1100 light-mode desktop hero.
+- `qa/v2-light-gold.png` â€” 1440 Ã— 1000 light-mode feature-grid capture.
+- `qa/v2-light-mobile.png` â€” 500 Ã— 950 light-mode mobile hero.
+- `qa/v2-dark-gold.png` â€” 1440 Ã— 1000 dark-mode regression capture.
+
+**Findings**
+
+No actionable P0, P1, or P2 differences remain.
+
+- Theme switching: a persistent, accessible header control switches between the existing dark presentation and a purpose-built warm-white mode. `?theme=light` supports a directly shareable light-mode entry point.
+- Color and visual tokens: light mode uses warm white, ink, hairline, card, and header tokens rather than simply inverting the dark view.
+- Image quality and asset fidelity: five composition-preserving gold variants replace the original blue evidence artwork. The hero, arc, evidence planes, credit dial, and live path retain their original geometry and framing.
+- Responsive behavior: the light-mode hero, logo, toggle, copy, and gold illustration all remain legible at the 500px mobile smoke-test width.
+
+**Implementation checklist**
+
+- [x] Persistent dark/light theme switch added to V2 navigation.
+- [x] Direct light-mode URL state supported.
+- [x] Warm-white semantic token set implemented.
+- [x] Hero and all four capability illustrations recast in Barrier Intelligence gold.
+- [x] Desktop, feature-grid, mobile, and dark-mode regression captures inspected.
+
+final result: passed
+
+---
+
 # Typography-density refinement — 15 July 2026
 
 **Source visual truth**

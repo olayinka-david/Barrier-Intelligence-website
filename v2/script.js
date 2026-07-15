@@ -33,6 +33,24 @@
 
   const menuButton = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.desktop-nav');
+  const themeToggle = document.querySelector('.theme-toggle');
+  const applyTheme = (theme, persist = true) => {
+    const isLight = theme === 'light';
+    document.documentElement.dataset.theme = isLight ? 'light' : 'dark';
+    themeToggle?.setAttribute('aria-pressed', String(isLight));
+    themeToggle?.setAttribute('aria-label', `Switch to ${isLight ? 'dark' : 'light'} mode`);
+    const label = themeToggle?.querySelector('.theme-toggle__label');
+    const glyph = themeToggle?.querySelector('.theme-toggle__glyph');
+    if (label) label.textContent = isLight ? 'Dark' : 'Light';
+    if (glyph) glyph.textContent = isLight ? '◐' : '☼';
+    if (persist) localStorage.setItem('barrier-theme', isLight ? 'light' : 'dark');
+  };
+  const requestedTheme = new URLSearchParams(window.location.search).get('theme');
+  const savedTheme = localStorage.getItem('barrier-theme');
+  applyTheme(requestedTheme === 'light' || (requestedTheme !== 'dark' && savedTheme === 'light') ? 'light' : 'dark', false);
+  themeToggle?.addEventListener('click', () => {
+    applyTheme(document.documentElement.dataset.theme === 'light' ? 'dark' : 'light');
+  });
   menuButton?.addEventListener('click', () => {
     const open = menuButton.getAttribute('aria-expanded') === 'true';
     menuButton.setAttribute('aria-expanded', String(!open));
