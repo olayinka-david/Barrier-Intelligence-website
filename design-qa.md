@@ -52,6 +52,44 @@ final result: passed
 
 ---
 
+# Typography-density refinement — 15 July 2026
+
+**Source visual truth**
+
+- User-provided issue reference: `C:\Users\ASUSRO~1\AppData\Local\Temp\codex-clipboard-f09cfc26-9837-4f38-ad61-831f12333a6e.png`
+
+**Implementation evidence**
+
+- `qa/typography-v1-desktop.png` — 1720 × 920 V1 light desktop, static QA state.
+
+**Findings**
+
+No actionable P0, P1, or P2 differences remain.
+
+- Fonts and typography: the display system now tops out at 5.85rem for the V1 hero and 4.35rem for shared V1 section headings, preserving Hanken Grotesk’s tight, technical character while preventing oversized line wrapping.
+- Spacing and layout rhythm: the hero has a dedicated 1560px maximum width, separate from the 1380px navigation and general content shell. Its copy column was widened and the visual column retained enough width to preserve the evidence-render crop.
+- Colors and visual tokens: no palette, logo, or theme-state changes were introduced.
+- Image quality and asset fidelity: the original hero render remains unaltered and gains more visual breathing room.
+- Copy and content: unchanged; only typographic density and layout proportions were refined.
+
+**Focused-region comparison evidence**
+
+The user’s screenshot and the revised 1720px V1 capture were reviewed together. The earlier six-line hero stack is resolved into four intentional lines, with “Fire and gas” no longer split across lines.
+
+**Comparison history**
+
+1. P1: V1's 7.2rem display cap combined with the narrow .85fr copy track produced a visually over-tall, six-line hero at wide desktop widths. Fixed by widening the hero-only shell/copy track and lowering the display cap. Post-fix capture shows the intended horizontal reading rhythm.
+
+**Implementation checklist**
+
+- [x] V1 hero width decoupled from navigation width.
+- [x] V1 hero and shared display scale reduced proportionally.
+- [x] Desktop visual crop and CTA area preserved.
+
+final result: passed
+
+---
+
 # Brand-alignment verification â€” 14 July 2026
 
 **Source visual truth**

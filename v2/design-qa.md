@@ -85,3 +85,43 @@ Header/logo, hero, and feature-card captures were reviewed because they jointly 
 ## Final status
 
 final result: passed
+
+---
+
+# Typography-density refinement — 15 July 2026
+
+**Source visual truth**
+
+- User-provided issue reference: `C:\Users\ASUSRO~1\AppData\Local\Temp\codex-clipboard-f09cfc26-9837-4f38-ad61-831f12333a6e.png`
+
+**Implementation evidence**
+
+- `qa/typography-v2-desktop.png` — 1440 × 1000 V2 dark desktop, static QA state.
+- `qa/typography-v2-mobile.png` — 500 × 950 V2 dark mobile, static QA state.
+
+**Findings**
+
+No actionable P0, P1, or P2 differences remain.
+
+- Fonts and typography: the V2 hero now ranges from 58px to 98px instead of 64px to 116px; shared display headings were reduced to a 74px cap. The sentence remains prominent without consuming excess vertical space.
+- Spacing and layout rhythm: V2 receives a dedicated 1500px hero shell, preserving the intentional wider editorial composition while the navigation stays within its original shell.
+- Colors and visual tokens: the Barrier Intelligence dark theme and gold signal treatment remain unchanged.
+- Image quality and asset fidelity: hero and feature artwork retain their intended framing and contrast.
+- Copy and content: unchanged.
+
+**Focused-region comparison evidence**
+
+The revised desktop hero confirms the main proposition holds on two calm lines. The mobile capture confirms it remains readable at the existing 500px smoke-test width without clipping or horizontal scroll.
+
+**Comparison history**
+
+1. P2: V2's 116px display cap created unnecessary vertical density at desktop sizes. Fixed by lowering the hero and shared-display caps while providing a wider hero-only shell. Post-fix desktop and mobile captures passed.
+
+**Implementation checklist**
+
+- [x] V2 hero scale reduced.
+- [x] V2 shared display scale reduced.
+- [x] Wider hero shell added without changing navigation width.
+- [x] Desktop and mobile captures inspected.
+
+final result: passed
