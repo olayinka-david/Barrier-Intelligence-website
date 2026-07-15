@@ -4,3 +4,5 @@ node_modules/
 .preview.*.log
 qa/
 v2/qa/
+
+.vercel
