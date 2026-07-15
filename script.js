@@ -6,6 +6,8 @@ const requestedTheme = urlParams.get("theme");
 const isQa = urlParams.get("qa") === "1";
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const hasGsap = typeof window.gsap !== "undefined";
+const menuButton = document.querySelector(".site-menu-toggle");
+const siteNav = document.querySelector(".site-nav");
 
 if (isQa) root.classList.add("qa-capture");
 
@@ -36,6 +38,18 @@ function setTheme(theme, animate = true) {
 
 setTheme(initialTheme, false);
 themeButton.addEventListener("click", () => setTheme(root.dataset.theme === "dark" ? "light" : "dark"));
+
+menuButton?.addEventListener("click", () => {
+  const isOpen = siteNav.classList.toggle("is-open");
+  menuButton.setAttribute("aria-expanded", String(isOpen));
+  menuButton.textContent = isOpen ? "Close" : "Menu";
+});
+
+siteNav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
+  siteNav.classList.remove("is-open");
+  menuButton?.setAttribute("aria-expanded", "false");
+  if (menuButton) menuButton.textContent = "Menu";
+}));
 
 const tabs = [...document.querySelectorAll('[role="tab"]')];
 let tabAnimating = false;

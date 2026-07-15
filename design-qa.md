@@ -52,6 +52,51 @@ final result: passed
 
 ---
 
+# V1 multi-page expansion — 16 July 2026
+
+**Source visual truth**
+
+- The production V1 homepage and its established Barrier Intelligence design tokens, logo treatment, white technical stage, warm-gold signal color and grayscale/gold 3D engineering imagery.
+- Refero reference lock recorded in `multi-page-strategy.md`: Groq for industrial-minimal section rhythm, Fingerprint for data-sheet precision, Programa for architectural editorial structure and Operate for ordered ledger logic only.
+
+**Implementation evidence**
+
+- `qa/multipage-design-comparison.png` — same-viewport comparison of the V1 homepage and the new Method route.
+- `qa/multipage-assure3d-desktop.png`, `qa/multipage-method-desktop.png`, `qa/multipage-applications-desktop.png`, `qa/multipage-evidence-desktop.png`, `qa/multipage-pilot-desktop.png` — 1440 × 1000 route captures.
+- `qa/multipage-method-mobile-final.png`, `qa/multipage-pilot-mobile-final.png`, `qa/multipage-evidence-mobile-final.png` — narrow responsive captures.
+- `qa/multipage-method-dark.png` — dark-theme verification.
+- `qa/multipage-method-long.png`, `qa/multipage-applications-long.png`, `qa/multipage-evidence-long.png`, `qa/multipage-pilot-long.png` — long-page content and rhythm checks.
+
+**Findings**
+
+No actionable P0, P1 or P2 differences remain.
+
+- Visual consistency: the five routes preserve the V1 typography, white/off-white surfaces, restrained gold signal role, thin borders, square engineering frames and official logo assets.
+- Information architecture: each page resolves one buyer question—product, method, application, evidence or pilot—without duplicating the homepage narrative.
+- Image fidelity: the two generated technical scenes match the existing grayscale/gold isometric asset family and fit their measured 16:10 hero frames without distortion.
+- Responsive behavior: desktop split heroes collapse to one column; figures and data tables no longer force the grid wider than the viewport; ordered processes and cards remain readable.
+- Theme and interaction: theme state persists across routes; mobile navigation, route links, pilot form, on-load sequence, reveal motion, progress indicator and reduced-motion/QA fallbacks are wired.
+- Claims: the pages consistently describe a functional prototype entering pilot deployment, preserve qualified-engineer authority and avoid certification claims.
+
+**Comparison history**
+
+1. P1: default browser margins on hero figures increased the mobile grid min-content width and clipped copy/artwork. Fixed by zeroing figure margins, allowing grid children to shrink and tightening the small-screen display scale.
+2. P2: the Evidence hero used a data sheet instead of a figure and therefore missed the hero entrance sequence. Fixed by adding the register to the same GSAP entrance target.
+3. P2: mobile menu state changed visually but the control label remained “Menu.” Fixed by synchronising Menu/Close text and resetting after navigation.
+
+**Implementation checklist**
+
+- [x] Five non-footer routes implemented and linked.
+- [x] Shared header, theme, mobile navigation and footer applied.
+- [x] Two new technical 3D assets added.
+- [x] Pilot form validation and completion state implemented.
+- [x] Desktop, mobile, long-page and dark-theme visual checks completed.
+- [x] Motion honors reduced-motion and deterministic QA capture states.
+
+final result: passed
+
+---
+
 # GSAP interaction refinement â€” 15 July 2026
 
 - Loader-to-hero staging, scroll progress, trust-strip reveal, image parallax, counter motion, card lift, register perspective, and magnetic controls added.
