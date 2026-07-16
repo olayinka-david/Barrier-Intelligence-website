@@ -16,6 +16,21 @@ if (qaMode && params.get('view') === 'footer') {
   if (footerPreview) footerPreview.style.marginTop = '24px';
 }
 
+if (qaMode && params.get('view') === 'symbols') {
+  document.querySelector('.site-header').hidden = true;
+  document.querySelector('.site-footer').hidden = true;
+  const main = document.querySelector('main');
+  main?.querySelectorAll(':scope > section').forEach((section) => {
+    section.hidden = !section.classList.contains('symbol-section');
+  });
+  const symbolSection = main?.querySelector('.symbol-section');
+  if (symbolSection) {
+    symbolSection.style.paddingBlock = symbolSection.classList.contains('page-band') ? '0' : '52px';
+    const nestedSection = symbolSection.querySelector(':scope > .page-section');
+    if (nestedSection) nestedSection.style.paddingBlock = '52px';
+  }
+}
+
 function setTheme(theme, animate = true) {
   root.dataset.theme = theme;
   const dark = theme === 'dark';
@@ -93,7 +108,7 @@ function initMotion() {
     });
   });
 
-  gsap.utils.toArray('.technical-visual img, .inner-hero-visual img').forEach((image) => {
+  gsap.utils.toArray('.technical-visual img, .inner-hero-visual img, .application-symbol-media img').forEach((image) => {
     gsap.to(image, { yPercent: 4, scale: 1.025, ease: 'none', scrollTrigger: { trigger: image.parentElement, start: 'top bottom', end: 'bottom top', scrub: 1 } });
   });
 
@@ -103,7 +118,7 @@ function initMotion() {
   }
 
   if (window.matchMedia('(pointer: fine)').matches) {
-    document.querySelectorAll('.content-card, .standard').forEach((card) => {
+    document.querySelectorAll('.content-card, .standard, .method-symbol, .evidence-symbol-card, .application-symbol-card').forEach((card) => {
       card.classList.add('motion-surface');
       card.addEventListener('pointerenter', () => gsap.to(card, { y: -7, scale: 1.01, duration: .35, ease: 'power3.out' }));
       card.addEventListener('pointerleave', () => gsap.to(card, { y: 0, scale: 1, duration: .42, ease: 'power3.out' }));

@@ -52,6 +52,51 @@ final result: passed
 
 ---
 
+# Branded symbol system verification, 16 July 2026
+
+**Source visual truth**
+
+- Method reference: `C:\Users\ASUSRO~1\AppData\Local\Temp\codex-clipboard-c9101fb2-b65c-414b-a414-3ee730af34ba.png`
+- Evidence reference: `C:\Users\ASUSRO~1\AppData\Local\Temp\codex-clipboard-eab28a8d-e43e-4e23-8d3e-72002a685b74.png`
+- Applications reference: `C:\Users\ASUSRO~1\AppData\Local\Temp\codex-clipboard-ca307777-50e4-42a9-af01-8e4e6c28f05e.png`
+
+**Implementation evidence**
+
+- `qa/symbols/method-desktop.png`, open editorial symbol row at 1440 by 1000.
+- `qa/symbols/evidence-desktop.png`, large evidence cards at 1440 by 1000.
+- `qa/symbols/applications-desktop.png`, dark visual-panel cards at 1440 by 1000.
+- `qa/symbols/applications-mobile.png`, single-column responsive state at 500 by 1000.
+- `qa/symbols/combined-reference-implementation.png`, all three references and implementations reviewed together.
+
+**Findings**
+
+No actionable P0, P1 or P2 differences remain.
+
+- Method keeps the reference's freestanding three-symbol rhythm and generous negative space without introducing a card shell.
+- Evidence adapts the large white-card treatment to three evidence states, with the visual object centred above a structured provenance label and explanation.
+- Applications matches the reference's dark visual-top and light copy-bottom pattern while using technical plant scenes instead of generic icons.
+- All nine symbols are specific to the adjacent engineering claim and use the established gold, charcoal, grayscale and detector-lime palette.
+- The card layouts preserve equal media proportions, aligned copy starts, restrained borders and the existing site typography.
+- The 500px capture confirms the application cards collapse without crop, overflow or compressed copy.
+- The entire public HTML surface, including V2, was scanned for em dash characters and HTML em dash entities; none remain.
+
+**Comparison history**
+
+1. The Evidence QA isolation initially retained both outer and inner section padding. The QA-only view now normalises the nested section padding so the comparison uses the same visible density as the other two sections.
+2. The Applications card subjects were checked for consistent dark-stage cropping. All three retain their primary gold verification signal within the visible card frame at desktop and mobile widths.
+
+**Implementation checklist**
+
+- [x] Nine copy-specific ImageGen assets created and preserved in `assets/symbols/`.
+- [x] Three distinct reference-derived section patterns implemented.
+- [x] GSAP reveal, hover lift and image parallax targets extended to the new surfaces.
+- [x] Desktop and mobile visual comparisons completed.
+- [x] Visible em dashes removed across both site versions.
+
+final result: passed
+
+---
+
 # 3D footer and legal routes — 16 July 2026
 
 **Source visual truth**
