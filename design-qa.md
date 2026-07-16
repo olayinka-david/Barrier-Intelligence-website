@@ -274,3 +274,20 @@ Header/logo regions were reviewed at the same 1440 × 1000 viewport in both them
 - [x] Header/logo contrast verified in both states.
 
 final result: passed
+
+---
+
+# Shared shell alignment verification, 16 July 2026
+
+**Implementation evidence**
+
+- `qa/alignment/header-before.png` and `qa/alignment/header-after.png`, 1720 by 1000 desktop shell comparison.
+- `qa/alignment/footer-before.png` and `qa/alignment/footer-after.png`, 1720 by 1000 footer navigation comparison.
+
+**Findings**
+
+- The header now uses the same 1560px wide shell as the hero, producing the same 80px desktop gutter at a 1720px viewport.
+- Product, Assurance and Legal footer headings now share one top baseline. The shorter Legal column no longer inherits vertical centring from the global navigation rule.
+- Existing responsive breakpoints remain unchanged because the wide and standard shells already collapse to the same mobile gutter token.
+
+final result: passed
