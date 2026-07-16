@@ -11,6 +11,13 @@ const siteNav = document.querySelector(".site-nav");
 
 if (isQa) root.classList.add("qa-capture");
 
+if (isQa && urlParams.get("view") === "footer") {
+  document.querySelector(".site-header").hidden = true;
+  document.querySelector("main").hidden = true;
+  const footerPreview = document.querySelector(".site-footer");
+  if (footerPreview) footerPreview.style.marginTop = "24px";
+}
+
 const qaSection = urlParams.get("section") || (location.hash.startsWith("#qa-") ? location.hash.slice(4) : "");
 if (isQa && qaSection) {
   document.querySelector(".site-header").hidden = true;
@@ -225,6 +232,14 @@ function initMotion() {
   reveal(".proof-grid article", ".proof-grid", { stagger: 0.15, start: "top 78%" });
   reveal(".vision > *", ".vision", { stagger: 0.1 });
   reveal(".cta-section > *", ".cta-section", { stagger: 0.1, start: "top 78%" });
+  reveal(".site-footer-panel > *", ".site-footer", { stagger: 0.12, start: "top 80%" });
+
+  gsap.fromTo(".site-footer-scene", { yPercent: -2, scale: 1.045 }, {
+    yPercent: 2,
+    scale: 1.025,
+    ease: "none",
+    scrollTrigger: { trigger: ".site-footer", start: "top bottom", end: "bottom bottom", scrub: 1 }
+  });
 
   gsap.from(".vision-line span", {
     opacity: 0.28,

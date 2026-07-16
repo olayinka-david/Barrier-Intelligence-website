@@ -98,6 +98,42 @@
 .page-cta p { max-width: 650px; font-size: 18px; }
 .page-cta .button { margin-top: 20px; background: var(--primary-foreground); color: var(--primary); }
 
+.site-footer { width: var(--page); min-height: clamp(650px, 52vw, 800px); margin: clamp(70px, 10vw, 140px) auto 24px; position: relative; overflow: hidden; border: 1px solid var(--border); background: #f5f3ee; color: var(--foreground); isolation: isolate; }
+.site-footer-scene { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center top; transform: scale(1.025); transform-origin: center bottom; }
+.site-footer-panel { position: absolute; top: clamp(34px, 5.5vw, 82px); right: clamp(24px, 6vw, 90px); left: clamp(24px, 6vw, 90px); padding: clamp(30px, 4vw, 58px); border: 1px solid color-mix(in srgb, var(--border) 76%, transparent); border-radius: 28px 28px 56px 56px; background: color-mix(in srgb, var(--card) 94%, transparent); box-shadow: 0 24px 70px rgb(29 24 15 / 10%); backdrop-filter: blur(14px); }
+.site-footer-main { display: grid; grid-template-columns: minmax(250px, 1.1fr) minmax(520px, 1.35fr); gap: clamp(45px, 8vw, 130px); padding-bottom: clamp(38px, 5vw, 64px); }
+.site-footer-intro p { max-width: 330px; margin: 24px 0 0; color: var(--foreground-muted); font-size: 15px; }
+.site-footer-nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 4vw, 60px); }
+.site-footer-nav > div { display: grid; align-content: start; gap: 10px; }
+.site-footer-nav strong { margin-bottom: 4px; font-size: 13px; font-weight: 600; }
+.site-footer-nav a { width: max-content; max-width: 100%; color: var(--foreground-muted); font-size: 14px; }
+.site-footer-nav a:hover { color: var(--primary); }
+.site-footer-base { min-height: 64px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 30px; color: var(--foreground-subtle); font-size: 12px; }
+.site-footer-status { display: inline-flex; align-items: center; gap: 10px; color: var(--foreground-muted); }
+.site-footer-status .signal-dot { width: 7px; height: 7px; }
+.site-footer-caption { position: absolute; right: 24px; bottom: 18px; left: 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; color: #5e584e; font: 10px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
+.site-footer-caption a { padding-bottom: 2px; border-bottom: 1px solid rgb(94 88 78 / 35%); }
+
+.legal-hero { width: var(--page); margin-inline: auto; padding: clamp(100px, 12vw, 170px) 0 clamp(70px, 8vw, 110px); border-bottom: 1px solid var(--border); }
+.legal-hero h1 { max-width: 980px; margin: 24px 0 30px; font-size: clamp(3.4rem, 7vw, 7.2rem); line-height: .92; letter-spacing: -.06em; }
+.legal-hero p:not(.eyebrow) { max-width: 720px; margin: 0; color: var(--foreground-muted); font-size: clamp(1.05rem, 1.5vw, 1.3rem); }
+.legal-meta { display: flex; flex-wrap: wrap; gap: 12px 26px; margin-top: 34px; color: var(--foreground-subtle); font: 10px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
+.legal-layout { width: var(--page); margin-inline: auto; padding: clamp(70px, 9vw, 130px) 0; display: grid; grid-template-columns: minmax(180px, 260px) minmax(0, 820px); justify-content: space-between; gap: clamp(60px, 11vw, 170px); align-items: start; }
+.legal-toc { position: sticky; top: 30px; display: grid; gap: 10px; padding-top: 10px; }
+.legal-toc strong { margin-bottom: 10px; color: var(--primary); font: 10px var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
+.legal-toc a { width: max-content; max-width: 100%; color: var(--foreground-subtle); font-size: 13px; }
+.legal-toc a:hover { color: var(--foreground); }
+.legal-copy { min-width: 0; }
+.legal-copy section { padding: 0 0 clamp(50px, 6vw, 78px); margin-bottom: clamp(50px, 6vw, 78px); border-bottom: 1px solid var(--border); }
+.legal-copy section:last-child { margin-bottom: 0; border-bottom: 0; }
+.legal-copy h2 { margin: 0 0 24px; font-size: clamp(2rem, 3.6vw, 3.5rem); }
+.legal-copy h3 { margin: 32px 0 12px; font-size: 1.2rem; }
+.legal-copy p, .legal-copy li { color: var(--foreground-muted); font-size: 17px; line-height: 1.72; }
+.legal-copy ul { margin: 20px 0 0; padding-left: 22px; }
+.legal-copy li + li { margin-top: 10px; }
+.legal-copy a { color: var(--primary); border-bottom: 1px solid color-mix(in srgb, var(--primary) 42%, transparent); }
+.legal-note { padding: 22px 24px; border-left: 3px solid var(--primary); background: var(--card-hi); color: var(--foreground-muted); font-size: 14px; }
+
 @media (max-width: 1080px) {
   .site-menu-toggle { display: inline-flex; align-items: center; }
   .site-header nav.site-nav { display: none; }
@@ -111,6 +147,9 @@
   .metric-strip article:nth-child(2) { border-right: 0; }
   .metric-strip article:nth-child(-n+2) { border-bottom: 1px solid var(--border); }
   .pilot-layout { grid-template-columns: 1fr; }
+  .site-footer-main { grid-template-columns: 1fr; gap: 42px; }
+  .site-footer { min-height: 830px; }
+  .legal-layout { grid-template-columns: 200px minmax(0, 1fr); gap: 60px; }
 }
 
 @media (max-width: 720px) {
@@ -136,4 +175,17 @@
   .pilot-form .form-grid { grid-template-columns: 1fr; }
   .pilot-form .full { grid-column: auto; }
   .page-cta { width: 100%; margin-bottom: 0; }
+  .site-footer { width: 100%; min-height: 980px; margin-bottom: 0; border-right: 0; border-left: 0; }
+  .site-footer-panel { top: 20px; right: 14px; left: 14px; padding: 26px 22px; border-radius: 22px 22px 38px 38px; }
+  .site-footer-main { gap: 34px; padding-bottom: 32px; }
+  .site-footer-intro p { margin-top: 18px; font-size: 14px; }
+  .site-footer-nav { grid-template-columns: 1fr 1fr; gap: 30px 18px; }
+  .site-footer-base { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .site-footer-caption { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .site-footer-scene { object-position: 56% bottom; }
+  .legal-hero h1 { font-size: clamp(3rem, 15vw, 4.7rem); }
+  .legal-layout { grid-template-columns: 1fr; gap: 55px; }
+  .legal-toc { position: static; grid-template-columns: 1fr 1fr; padding: 0 0 35px; border-bottom: 1px solid var(--border); }
+  .legal-toc strong { grid-column: 1 / -1; }
+  .legal-copy p, .legal-copy li { font-size: 16px; }
 }

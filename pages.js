@@ -9,6 +9,13 @@ const savedTheme = localStorage.getItem('bi-theme');
 const requestedTheme = params.get('theme');
 const initialTheme = requestedTheme === 'dark' || (requestedTheme !== 'light' && savedTheme === 'dark') ? 'dark' : 'light';
 
+if (qaMode && params.get('view') === 'footer') {
+  document.querySelector('.site-header').hidden = true;
+  document.querySelector('main').hidden = true;
+  const footerPreview = document.querySelector('.site-footer');
+  if (footerPreview) footerPreview.style.marginTop = '24px';
+}
+
 function setTheme(theme, animate = true) {
   root.dataset.theme = theme;
   const dark = theme === 'dark';
@@ -89,6 +96,11 @@ function initMotion() {
   gsap.utils.toArray('.technical-visual img, .inner-hero-visual img').forEach((image) => {
     gsap.to(image, { yPercent: 4, scale: 1.025, ease: 'none', scrollTrigger: { trigger: image.parentElement, start: 'top bottom', end: 'bottom top', scrub: 1 } });
   });
+
+  const footerScene = document.querySelector('.site-footer-scene');
+  if (footerScene) {
+    gsap.fromTo(footerScene, { yPercent: -2, scale: 1.045 }, { yPercent: 2, scale: 1.025, ease: 'none', scrollTrigger: { trigger: '.site-footer', start: 'top bottom', end: 'bottom bottom', scrub: 1 } });
+  }
 
   if (window.matchMedia('(pointer: fine)').matches) {
     document.querySelectorAll('.content-card, .standard').forEach((card) => {

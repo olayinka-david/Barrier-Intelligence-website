@@ -52,6 +52,51 @@ final result: passed
 
 ---
 
+# 3D footer and legal routes — 16 July 2026
+
+**Source visual truth**
+
+- `C:\Users\ASUSRO~1\AppData\Local\Temp\codex-clipboard-4a08ec05-ad78-4a5d-9887-08273791383a.png` — floating rounded information panel over a cinematic 3D journey landscape.
+- Existing V1 grayscale, white-stage, gold-physics and lime-detector image language.
+
+**Implementation evidence**
+
+- `qa/legal-footer-desktop-final2.png` — 1440 × 900 light footer state.
+- `qa/legal-footer-dark.png` — dark-panel theme treatment.
+- `qa/legal-privacy-desktop-final.png` — 1440 × 1000 Privacy Policy route.
+- `qa/legal-footer-comparison.png` — normalized same-input comparison of the source and implementation.
+
+**Findings**
+
+No actionable P0, P1 or P2 differences remain.
+
+- Fonts and typography: the footer retains V1 Hanken Grotesk and mono metadata roles while matching the source's quiet hierarchy and compact link density.
+- Spacing and layout rhythm: the wide rounded panel floats above the lower scene with the source's large outer frame, balanced columns, divider and calm whitespace.
+- Colors and visual tokens: orange was intentionally translated into the established Barrier Intelligence gold; the lime signal remains restricted to detector/pilot status.
+- Image quality and asset fidelity: the generated 3D scene is a real raster asset, not CSS art. It preserves the source's rolling journey composition while replacing the logistics subject with a process module, pipeline path, technical contours and detector beacons.
+- Copy and content: navigation is product-specific and both legal routes are present. Privacy copy reflects the static site's current behavior; terms preserve the product's prototype and engineering-authority boundaries.
+- Responsive and theme states: the panel collapses to two-column link groups on small screens, the scene repositions to preserve the route, and dark mode uses an opaque high-contrast panel over the same art.
+
+**Comparison history**
+
+1. P2: the first footer crop hid the process module behind the information panel. Fixed by top-aligning the generated landscape within the frame; the post-fix capture exposes the plant and the verification path beneath the panel.
+
+**Focused-region comparison evidence**
+
+The full footer is the fidelity-sensitive component and is fully legible in the combined comparison, so a separate crop was not required.
+
+**Implementation checklist**
+
+- [x] Shared 3D footer applied to all V1 and legal routes.
+- [x] Product, assurance, legal and contact links resolve.
+- [x] Light and dark footer treatments checked.
+- [x] Privacy Policy and Terms & Conditions routes added.
+- [x] Safety-critical reliance and pilot-data boundaries stated.
+
+final result: passed
+
+---
+
 # V1 multi-page expansion — 16 July 2026
 
 **Source visual truth**
