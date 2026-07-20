@@ -37,6 +37,7 @@ function setTheme(theme, animate = true) {
   if (themeButton) {
     themeButton.textContent = dark ? 'Light' : 'Dark';
     themeButton.setAttribute('aria-label', `Switch to ${dark ? 'light' : 'dark'} theme`);
+    themeButton.setAttribute('title', `Switch to ${dark ? 'light' : 'dark'} theme`);
     themeButton.setAttribute('aria-pressed', String(dark));
   }
   localStorage.setItem('bi-theme', theme);

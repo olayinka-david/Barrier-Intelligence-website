@@ -291,3 +291,17 @@ final result: passed
 - Existing responsive breakpoints remain unchanged because the wide and standard shells already collapse to the same mobile gutter token.
 
 final result: passed
+
+---
+
+# Dark-mode header refinement, 20 July 2026
+
+**Findings**
+
+- Removed the font-dependent alternate dark-mode wordmark from the rendered state and reused the official black wordmark on a compact light brand plate.
+- Confirmed the official logo remains 184px on desktop and 142px at the mobile breakpoint without duplicate or overlapping text.
+- Replaced the visible Dark and Light labels with moon and sun icons while retaining dynamic accessible labels, pressed state and hover titles.
+- Verified light mode, dark mode, the 500px mobile header and the dark footer treatment in the in-app browser.
+- Confirmed the 500px layout has no horizontal overflow from the revised logo or theme control.
+
+final result: passed
