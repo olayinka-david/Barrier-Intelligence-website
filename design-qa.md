@@ -298,10 +298,14 @@ final result: passed
 
 **Findings**
 
-- Removed the font-dependent alternate dark-mode wordmark from the rendered state and reused the official black wordmark on a compact light brand plate.
-- Confirmed the official logo remains 184px on desktop and 142px at the mobile breakpoint without duplicate or overlapping text.
-- Replaced the visible Dark and Light labels with moon and sun icons while retaining dynamic accessible labels, pressed state and hover titles.
+- Removed the font-dependent alternate dark-mode wordmark from the rendered state and replaced it with the supplied transparent gold-and-white logo asset.
+- Confirmed the dark logo remains 184px on desktop and 142px at the mobile breakpoint without duplicate or overlapping text.
+- Replaced the visible Dark and Light labels with dedicated Lucide-style moon and sun SVG assets while retaining dynamic accessible labels, pressed state and hover titles.
 - Verified light mode, dark mode, the 500px mobile header and the dark footer treatment in the in-app browser.
 - Confirmed the 500px layout has no horizontal overflow from the revised logo or theme control.
+
+**Source asset**
+
+- `C:\Users\ASUS ROG STRIX\Downloads\Barrier Intelligence Logo + Gold Symbol (WHITE).png`
 
 final result: passed

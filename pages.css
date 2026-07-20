@@ -183,9 +183,10 @@
 
 @media (max-width: 720px) {
   .site-header { grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
-  .site-header .brand-lockup__full { width: 142px; }
+  .site-header .brand-lockup__full, .site-header .brand-lockup__dark { width: 142px; }
   .header-actions { gap: 5px; }
   .theme-toggle, .site-menu-toggle { min-height: 38px; padding-inline: 9px; }
+  .theme-toggle { width: 38px; height: 38px; padding: 0; }
   .site-header nav.site-nav.is-open { top: 70px; }
   .site-menu-toggle { padding-inline: 10px; }
   .inner-hero { padding: 70px 0; }
