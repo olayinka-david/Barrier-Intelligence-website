@@ -52,6 +52,18 @@ final result: passed
 
 ---
 
+# Theme-icon centring verification, 21 July 2026
+
+**Findings**
+
+- Anchored the sun and moon artwork to the exact geometric centre of the circular control with absolute 50% positioning.
+- Preserved that centre point through both hover rotations and scale effects.
+- Confirmed the control remains 42px on desktop and 38px at the mobile breakpoint.
+
+final result: passed
+
+---
+
 # Branded symbol system verification, 16 July 2026
 
 **Source visual truth**
