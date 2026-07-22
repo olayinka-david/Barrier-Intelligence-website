@@ -1,15 +1,24 @@
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+window.gsap = gsap;
+window.ScrollTrigger = ScrollTrigger;
+
 const root = document.documentElement;
 const themeButton = document.querySelector(".theme-toggle");
 const savedTheme = localStorage.getItem("bi-theme");
 const urlParams = new URLSearchParams(location.search);
 const requestedTheme = urlParams.get("theme");
+const requestedDirection = urlParams.get("dir");
 const isQa = urlParams.get("qa") === "1";
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const hasGsap = typeof window.gsap !== "undefined";
+const hasGsap = true;
 const menuButton = document.querySelector(".site-menu-toggle");
 const siteNav = document.querySelector(".site-nav");
 
 if (isQa) root.classList.add("qa-capture");
+root.dir = requestedDirection === "rtl" ? "rtl" : "ltr";
 
 if (isQa && urlParams.get("view") === "footer") {
   document.querySelector(".site-header").hidden = true;
@@ -30,7 +39,7 @@ if (isQa && qaSection) {
 const initialTheme = requestedTheme === "dark" || (requestedTheme !== "light" && savedTheme === "dark") ? "dark" : "light";
 
 function setTheme(theme, animate = true) {
-  root.dataset.theme = theme;
+  root.dataset.colorMode = theme;
   const isDark = theme === "dark";
   themeButton.textContent = isDark ? "Light" : "Dark";
   themeButton.setAttribute("aria-label", `Switch to ${isDark ? "light" : "dark"} theme`);
@@ -45,12 +54,31 @@ function setTheme(theme, animate = true) {
 }
 
 setTheme(initialTheme, false);
-themeButton.addEventListener("click", () => setTheme(root.dataset.theme === "dark" ? "light" : "dark"));
+themeButton.addEventListener("click", () => setTheme(root.dataset.colorMode === "dark" ? "light" : "dark"));
+
+const activateButtonFromKeyboard = (control) => control?.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter" && event.key !== " ") return;
+  event.preventDefault();
+  control.click();
+});
+
+activateButtonFromKeyboard(themeButton);
+activateButtonFromKeyboard(menuButton);
 
 menuButton?.addEventListener("click", () => {
   const isOpen = siteNav.classList.toggle("is-open");
   menuButton.setAttribute("aria-expanded", String(isOpen));
   menuButton.textContent = isOpen ? "Close" : "Menu";
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape" || !siteNav?.classList.contains("is-open")) return;
+  siteNav.classList.remove("is-open");
+  menuButton?.setAttribute("aria-expanded", "false");
+  if (menuButton) {
+    menuButton.textContent = "Menu";
+    menuButton.focus();
+  }
 });
 
 siteNav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
@@ -70,7 +98,11 @@ function showTab(tab, animate = true) {
   const newPanel = document.getElementById(tab.getAttribute("aria-controls"));
 
   const commit = () => {
-    tabs.forEach((item) => item.setAttribute("aria-selected", String(item === tab)));
+    tabs.forEach((item) => {
+      const selected = item === tab;
+      item.setAttribute("aria-selected", String(selected));
+      item.tabIndex = selected ? 0 : -1;
+    });
     if (oldPanel) oldPanel.hidden = true;
     newPanel.hidden = false;
   };
@@ -86,7 +118,23 @@ function showTab(tab, animate = true) {
     .fromTo(newPanel, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out", clearProps: "opacity,transform" });
 }
 
-tabs.forEach((tab) => tab.addEventListener("click", () => showTab(tab)));
+tabs.forEach((tab) => {
+  tab.tabIndex = tab.getAttribute("aria-selected") === "true" ? 0 : -1;
+  tab.addEventListener("click", () => showTab(tab));
+  tab.addEventListener("keydown", (event) => {
+    const current = tabs.indexOf(tab);
+    const inlineStep = root.dir === "rtl" ? -1 : 1;
+    let next = null;
+    if (event.key === "ArrowRight") next = (current + inlineStep + tabs.length) % tabs.length;
+    if (event.key === "ArrowLeft") next = (current - inlineStep + tabs.length) % tabs.length;
+    if (event.key === "Home") next = 0;
+    if (event.key === "End") next = tabs.length - 1;
+    if (next === null) return;
+    event.preventDefault();
+    tabs[next].focus();
+    showTab(tabs[next]);
+  });
+});
 
 const dialog = document.querySelector(".contact-dialog");
 const dialogShell = dialog.querySelector(".dialog-shell");
@@ -154,6 +202,7 @@ function initMotion() {
   const { gsap, ScrollTrigger } = window;
   gsap.registerPlugin(ScrollTrigger);
   root.classList.add("motion-enabled");
+  const inlineDirection = root.dir === "rtl" ? -1 : 1;
 
   gsap.to(".scroll-progress span", {
     scaleX: 1,
@@ -179,7 +228,7 @@ function initMotion() {
     .from(".hero h1", { opacity: 0, y: 44, duration: 0.9 }, 1.92)
     .from(".hero-lede", { opacity: 0, y: 24, duration: 0.7 }, 2.08)
     .from(".hero-actions, .supporting-note", { opacity: 0, y: 18, stagger: 0.1, duration: 0.55 }, 2.2)
-    .from(".hero-visual", { opacity: 0, x: 44, scale: 0.985, duration: 1, ease: "power4.out" }, 1.98);
+    .from(".hero-visual", { opacity: 0, x: 44 * inlineDirection, scale: 0.985, duration: 1, ease: "power4.out" }, 1.98);
 
   gsap.to(".signal-dot", { scale: 1.28, opacity: 0.72, duration: 1.15, repeat: -1, yoyo: true, ease: "sine.inOut" });
 
@@ -244,7 +293,7 @@ function initMotion() {
 
   gsap.from(".vision-line span", {
     opacity: 0.28,
-    x: -18,
+    x: -18 * inlineDirection,
     stagger: 0.13,
     duration: 0.7,
     ease: "power3.out",
@@ -253,7 +302,7 @@ function initMotion() {
 
   gsap.from(".register-table .table-row:not(.table-head)", {
     opacity: 0,
-    x: 20,
+    x: 20 * inlineDirection,
     stagger: 0.09,
     duration: 0.65,
     ease: "power2.out",
@@ -261,7 +310,7 @@ function initMotion() {
   });
 
   gsap.fromTo(".table-row.selected", { borderColor: "transparent" }, {
-    borderColor: "#d2ac6c",
+    borderColor: getComputedStyle(root).getPropertyValue("--primary-hover").trim(),
     duration: 0.8,
     repeat: 1,
     yoyo: true,

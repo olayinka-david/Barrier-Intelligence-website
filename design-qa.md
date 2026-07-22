@@ -52,6 +52,33 @@ final result: passed
 
 ---
 
+# Ceramic community-template verification, 22 July 2026
+
+**Implementation evidence**
+
+- The production source imports `@utopia-studio-design/design-system/core.css` and the published `barrier-intelligence` theme through Vite.
+- All V1 interface colors consume semantic design-system roles. Brand colors remain only inside licensed logo and icon media.
+- Physical CSS declarations were replaced by logical block and inline properties; RTL direction is available through `?dir=rtl` for deterministic review.
+- Light and dark color modes use the theme's `data-color-mode` contract.
+
+**Interaction and responsive checks**
+
+- Desktop light and dark states rendered with zero horizontal overflow.
+- A 390 by 844 RTL mobile viewport rendered as a single-column hero with the mobile menu visible and zero horizontal overflow.
+- Enter opens the mobile menu, Escape closes it and returns focus to the menu button.
+- Arrow keys, Home and End update the product tabs, their selected state and the visible tab panel.
+- Reduced-motion users bypass decorative loading and reveal motion.
+
+**Submission checks**
+
+- `npm run build` passed.
+- `npx utopia-ds template validate .` passed with no warnings.
+- No secret files, private keys, install lifecycle scripts or private customer data are included.
+
+final result: passed
+
+---
+
 # Theme-icon centring verification, 21 July 2026
 
 **Findings**

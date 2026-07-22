@@ -1,0 +1,47 @@
+{
+  "$schema": "https://raw.githubusercontent.com/The-Utopia-Studio/Ceramic-Design-System/main/packages/design-system/src/manifests/community-template.schema.json",
+  "schemaVersion": 1,
+  "id": "barrier-intelligence-assurance-website",
+  "name": "Barrier Intelligence Assurance Website",
+  "version": "1.0.0",
+  "summary": "A responsive industrial assurance marketing website for physics-grounded Fire and Gas coverage verification.",
+  "category": "website",
+  "author": {
+    "name": "Olayinka David",
+    "url": "https://github.com/olayinka-david"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/olayinka-david/Barrier-Intelligence-website",
+  "preview": "https://barrier-intelligence-v1.vercel.app",
+  "designSystem": {
+    "package": "@utopia-studio-design/design-system",
+    "version": "^0.4.4"
+  },
+  "entry": "index.html",
+  "files": [
+    "applications",
+    "assets",
+    "assure3d",
+    "evidence",
+    "method",
+    "pilot",
+    "privacy",
+    "terms",
+    "index.html",
+    "styles.css",
+    "pages.css",
+    "script.js",
+    "pages.js",
+    "vite.config.js",
+    "package.json",
+    "package-lock.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "themes": ["barrier-intelligence"],
+  "features": {
+    "responsive": true,
+    "darkMode": true,
+    "rtl": true
+  }
+}
