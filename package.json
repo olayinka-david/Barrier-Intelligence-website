@@ -3,10 +3,17 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "node dev-server.mjs",
-    "start": "node dev-server.mjs"
+    "dev": "vite --host 0.0.0.0 --port 4173",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 4173",
+    "start": "vite --host 0.0.0.0 --port 4173"
   },
   "dependencies": {
+    "@utopia-studio-design/design-system": "^0.4.4",
     "gsap": "^3.15.0"
+  },
+  "devDependencies": {
+    "@utopia-studio-design/design-system-cli": "^0.3.1",
+    "vite": "^8.1.5"
   }
 }

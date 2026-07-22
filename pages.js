@@ -1,3 +1,10 @@
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+window.gsap = gsap;
+window.ScrollTrigger = ScrollTrigger;
+
 const root = document.documentElement;
 const params = new URLSearchParams(location.search);
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -7,7 +14,10 @@ const menuButton = document.querySelector('.site-menu-toggle');
 const siteNav = document.querySelector('.site-nav');
 const savedTheme = localStorage.getItem('bi-theme');
 const requestedTheme = params.get('theme');
+const requestedDirection = params.get('dir');
 const initialTheme = requestedTheme === 'dark' || (requestedTheme !== 'light' && savedTheme === 'dark') ? 'dark' : 'light';
+
+root.dir = requestedDirection === 'rtl' ? 'rtl' : 'ltr';
 
 if (qaMode && params.get('view') === 'footer') {
   document.querySelector('.site-header').hidden = true;
@@ -32,7 +42,7 @@ if (qaMode && params.get('view') === 'symbols') {
 }
 
 function setTheme(theme, animate = true) {
-  root.dataset.theme = theme;
+  root.dataset.colorMode = theme;
   const dark = theme === 'dark';
   if (themeButton) {
     themeButton.textContent = dark ? 'Light' : 'Dark';
@@ -47,12 +57,30 @@ function setTheme(theme, animate = true) {
 }
 
 setTheme(initialTheme, false);
-themeButton?.addEventListener('click', () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+themeButton?.addEventListener('click', () => setTheme(root.dataset.colorMode === 'dark' ? 'light' : 'dark'));
+
+const activateButtonFromKeyboard = (control) => control?.addEventListener('keydown', (event) => {
+  if (event.key !== 'Enter' && event.key !== ' ') return;
+  event.preventDefault();
+  control.click();
+});
+
+activateButtonFromKeyboard(themeButton);
+activateButtonFromKeyboard(menuButton);
 menuButton?.addEventListener('click', () => {
   const open = menuButton.getAttribute('aria-expanded') === 'true';
   menuButton.setAttribute('aria-expanded', String(!open));
   menuButton.textContent = open ? 'Menu' : 'Close';
   siteNav?.classList.toggle('is-open', !open);
+});
+document.addEventListener('keydown', (event) => {
+  if (event.key !== 'Escape' || !siteNav?.classList.contains('is-open')) return;
+  siteNav.classList.remove('is-open');
+  menuButton?.setAttribute('aria-expanded', 'false');
+  if (menuButton) {
+    menuButton.textContent = 'Menu';
+    menuButton.focus();
+  }
 });
 siteNav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
   siteNav.classList.remove('is-open');
